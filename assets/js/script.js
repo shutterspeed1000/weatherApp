@@ -2,7 +2,7 @@
 
 var searchCount = 0
 var dayURL = "api.openweathermap.org/data/2.5/forecast?lat=44.34&lon=10.99&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial"
-var locURL = "http://api.openweathermap.org/geo/1.0/direct?q=Orlando&limit=5&appid=bf922896d93871f3fce26701fa6fe44c"
+var locURL = "https://api.openweathermap.org/geo/1.0/direct?q=Orlando&limit=5&appid=bf922896d93871f3fce26701fa6fe44c"
 var loc = ""
 var lat = ""
 var lon = ""
