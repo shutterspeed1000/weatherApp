@@ -15,8 +15,8 @@ $(document).ready(function () {
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     var savedsrc = localStorage.getItem(key);
-
-    $(`.searched${i}`).text(savedsrc);
+$(`.searched${i}`).text(savedsrc);
+searchCount = i
   }
 });
 
