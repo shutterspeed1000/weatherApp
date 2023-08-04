@@ -10,49 +10,43 @@ var lon = "";
 var locURL = "";
 var fiveDURL = "";
 
-
-$(document).ready(function() {
-// loop to display items in local storage
-for (var i = 0; i < localStorage.length; i++) {
+$(document).ready(function () {
+  // loop to display items in local storage
+  for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     var savedsrc = localStorage.getItem(key);
-    
-    $(`.searched${i}`).text(savedsrc)
-  }
 
-})
+    $(`.searched${i}`).text(savedsrc);
+  }
+});
 
 // Start Search and add history tiles as each are created - starts to overwrite at #5
 // $("#search").click(function ()
 
-$( "#citySelect" ).on( "submit", function( event ){
+$("#citySelect").on("submit", function (event) {
   // set buttons to overwrite when search boxes are full
   if (searchCount === 9) {
     searchCount = 0;
   }
 
   // create url for location lookup (lat/long)
-  event.preventDefault()
+  event.preventDefault();
   loc = $(`#cityInp`).val();
   $(`.searched${searchCount}`).text(loc);
   searchCount++;
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
-  localStorage.setItem(searchCount, loc)
-  $(`#cityInp`).val("")
-  $(`.card-body`).removeClass("invisible")
+  localStorage.setItem(searchCount, loc);
+  $(`#cityInp`).val("");
+  $(`.card-body`).removeClass("invisible");
   locationSearch();
-  dailySearch()
-  fiveDaySearch()
 });
 
 //Click function for history buttons
 $(document).on(`click`, `.search`, function (event) {
   loc = $(this).text();
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
-  $(`.card-body`).removeClass("invisible")
+  $(`.card-body`).removeClass("invisible");
   locationSearch();
-  dailySearch()
-  fiveDaySearch()
 });
 
 // Location Search - URL created from input and pulls the lat and lon from it.
@@ -60,11 +54,10 @@ function locationSearch() {
   // send location lookup to api
   fetch(locURL)
     .then((response) => response.json())
-  
-    .then((location) => {
 
-      console.log(location)
-  
+    .then((location) => {
+      console.log(location);
+
       // Place current location on page
       $(`#owLocation`).text(location[0].name + ", " + location[0].state);
       lat = location[0].lat;
@@ -72,17 +65,15 @@ function locationSearch() {
 
       dayURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial`;
       fiveDURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial&exclude=current,minutely,hourly,alerts`;
-    }
-  
-    )
-    .catch(error => {
-      alert("Lookup Failed, please check your City and State and try again.")
-      $(`.card-body`).addClass("invisible")
+      dailySearch();
+      fiveDaySearch();
     })
-  
+    .catch((error) => {
+      alert("Please enter a valid city name as City,State and try again.");
+      $(`.card-body`).addClass("invisible")
+
+    });
 }
-
-
 
 // Daily Stats
 function dailySearch() {
@@ -99,22 +90,15 @@ function dailySearch() {
         "src",
         `https://openweathermap.org/img/w/${currentW.weather[0].icon}.png`
       );
-    })
-
-    .catch(error => {
-      alert("Lookup Failed, please check your City and State and try again.")
-      $(`.card-body`).addClass("invisible")
-    })
+    });
 }
-
 
 // 5 Days stats
 function fiveDaySearch() {
   return fetch(fiveDURL)
     .then((response) => response.json())
     .then((fiveDay) => {
-
-      var t = 4
+      var t = 4;
       // Day 1
       $(`#date1`).text(
         `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
@@ -126,7 +110,7 @@ function fiveDaySearch() {
         "src",
         `https://openweathermap.org/img/w/${fiveDay.list[t].weather[0].icon}.png`
       );
-var t = 12
+      var t = 12;
       // Day 2
       $(`#date2`).text(
         `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
@@ -138,7 +122,7 @@ var t = 12
         "src",
         `https://openweathermap.org/img/w/${fiveDay.list[t].weather[0].icon}.png`
       );
-var t = 20
+      var t = 20;
       // Day 3
       $(`#date3`).text(
         `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
@@ -150,7 +134,7 @@ var t = 20
         "src",
         `https://openweathermap.org/img/w/${fiveDay.list[t].weather[0].icon}.png`
       );
-var t = 28
+      var t = 28;
       // Day 4
       $(`#date4`).text(
         `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
@@ -162,7 +146,7 @@ var t = 28
         "src",
         `https://openweathermap.org/img/w/${fiveDay.list[t].weather[0].icon}.png`
       );
-var t = 36
+      var t = 36;
       // Day 5
       $(`#date5`).text(
         `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
@@ -174,11 +158,5 @@ var t = 36
         "src",
         `https://openweathermap.org/img/w/${fiveDay.list[t].weather[0].icon}.png`
       );
-      
-    })
-    .catch(error => {
-      alert("Lookup Failed, please check your City and State and try again.")
-      $(`.card-body`).addClass("invisible")
-    })
+    });
 }
-
