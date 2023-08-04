@@ -1,7 +1,7 @@
 //DateJS for time conversions
 dayjs().format();
 
-// Variables used outside of functions
+// Variables used outside of funct
 var searchCount = 0;
 var dayURL = "";
 var loc = "";
