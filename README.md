@@ -50,9 +50,11 @@ https://shutterspeed1000.github.io/weatherApp/
 
 ## Screenshots
 
-
+![screenshot](assets/images/weatherApp-ss.png)
 
 ## Credits
+
+https://openweathermap.org/forecast5 API used in application
 
 ## License
 

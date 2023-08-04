@@ -10,14 +10,15 @@ var lon = "";
 var locURL = "";
 var fiveDURL = "";
 
+// loop to display items in local storage
 $(document).ready(function () {
-  // loop to display items in local storage
   for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
     var savedsrc = localStorage.getItem(key);
-$(`.searched${i}`).text(savedsrc);
-searchCount = i
+    $(`.searched${key}`).text(savedsrc);
+    searchCount = i;
   }
+  searchCount++;
 });
 
 // Start Search and add history tiles as each are created - starts to overwrite at #5
@@ -33,9 +34,9 @@ $("#citySelect").on("submit", function (event) {
   event.preventDefault();
   loc = $(`#cityInp`).val();
   $(`.searched${searchCount}`).text(loc);
+  localStorage.setItem(searchCount, loc);
   searchCount++;
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
-  localStorage.setItem(searchCount, loc);
   $(`#cityInp`).val("");
   $(`.card-body`).removeClass("invisible");
   locationSearch();
@@ -70,8 +71,7 @@ function locationSearch() {
     })
     .catch((error) => {
       alert("Please enter a valid city name as City,State and try again.");
-      $(`.card-body`).addClass("invisible")
-
+      $(`.card-body`).addClass("invisible");
     });
 }
 
@@ -80,9 +80,7 @@ function dailySearch() {
   fetch(dayURL)
     .then((response) => response.json())
     .then((currentW) => {
-      $(`#dayDate`).text(
-        `${dayjs.unix(currentW.dt).format("MM-DD-YYYY")}`
-      );
+      $(`#dayDate`).text(`${dayjs.unix(currentW.dt).format("MM-DD-YYYY")}`);
       $(`#dayTemp`).text(`Temp: ${currentW.main.temp}`);
       $(`#dayWind`).text(`Wind: ${currentW.wind.speed}`);
       $(`#dayHum`).text(`Humidity: ${currentW.main.humidity}`);
@@ -100,9 +98,7 @@ function fiveDaySearch() {
     .then((fiveDay) => {
       var t = 4;
       // Day 1
-      $(`#date1`).text(
-        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
-      );
+      $(`#date1`).text(`${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`);
       $(`#temp1`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind1`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
       $(`#hum1`).text(`Humidity: ${fiveDay.list[t].main.humidity}`);
@@ -112,9 +108,7 @@ function fiveDaySearch() {
       );
       var t = 12;
       // Day 2
-      $(`#date2`).text(
-        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
-      );
+      $(`#date2`).text(`${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`);
       $(`#temp2`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind2`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
       $(`#hum2`).text(`Humidity: ${fiveDay.list[t].main.humidity}`);
@@ -124,9 +118,7 @@ function fiveDaySearch() {
       );
       var t = 20;
       // Day 3
-      $(`#date3`).text(
-        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
-      );
+      $(`#date3`).text(`${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`);
       $(`#temp3`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind3`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
       $(`#hum3`).text(`Humidity: ${fiveDay.list[t].main.humidity}`);
@@ -136,9 +128,7 @@ function fiveDaySearch() {
       );
       var t = 28;
       // Day 4
-      $(`#date4`).text(
-        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
-      );
+      $(`#date4`).text(`${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`);
       $(`#temp4`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind4`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
       $(`#hum4`).text(`Humidity: ${fiveDay.list[t].main.humidity}`);
@@ -148,9 +138,7 @@ function fiveDaySearch() {
       );
       var t = 36;
       // Day 5
-      $(`#date5`).text(
-        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
-      );
+      $(`#date5`).text(`${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`);
       $(`#temp5`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind5`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
       $(`#hum5`).text(`Humidity: ${fiveDay.list[t].main.humidity}`);
