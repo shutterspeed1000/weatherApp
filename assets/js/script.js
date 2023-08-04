@@ -10,8 +10,8 @@ var lon = "";
 var locURL = "";
 var fiveDURL = "";
 
-function setHistory(){
 
+$(document).ready(function() {
 // loop to display items in local storage
 for (var i = 0; i < localStorage.length; i++) {
     var key = localStorage.key(i);
@@ -20,14 +20,14 @@ for (var i = 0; i < localStorage.length; i++) {
     $(`.searched${i}`).text(savedsrc)
   }
 
-}
+})
 
 // Start Search and add history tiles as each are created - starts to overwrite at #5
 // $("#search").click(function ()
 
 $( "#citySelect" ).on( "submit", function( event ){
   // set buttons to overwrite when search boxes are full
-  if (searchCount === 5) {
+  if (searchCount === 9) {
     searchCount = 0;
   }
 
@@ -38,7 +38,8 @@ $( "#citySelect" ).on( "submit", function( event ){
   searchCount++;
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
   localStorage.setItem(searchCount, loc)
-  // $(`#cityInp`).val("")
+  $(`#cityInp`).val("")
+  $(`.card-body`).removeClass("invisible")
   locationSearch();
   dailySearch()
   fiveDaySearch()
@@ -48,6 +49,7 @@ $( "#citySelect" ).on( "submit", function( event ){
 $(document).on(`click`, `.search`, function (event) {
   loc = $(this).text();
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
+  $(`.card-body`).removeClass("invisible")
   locationSearch();
   dailySearch()
   fiveDaySearch()
@@ -58,9 +60,7 @@ function locationSearch() {
   // send location lookup to api
   fetch(locURL)
     .then((response) => response.json())
-    .catch(error => {
-      alert("Lookup Failed, please check your City and try again.")
-    })
+  
     .then((location) => {
 
       console.log(location)
@@ -73,9 +73,12 @@ function locationSearch() {
       dayURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial`;
       fiveDURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial&exclude=current,minutely,hourly,alerts`;
     }
-
-    
-    );
+  
+    )
+    .catch(error => {
+      alert("Lookup Failed, please check your City and State and try again.")
+      $(`.card-body`).addClass("invisible")
+    })
   
 }
 
@@ -96,7 +99,12 @@ function dailySearch() {
         "src",
         `https://openweathermap.org/img/w/${currentW.weather[0].icon}.png`
       );
-    });
+    })
+
+    .catch(error => {
+      alert("Lookup Failed, please check your City and State and try again.")
+      $(`.card-body`).addClass("invisible")
+    })
 }
 
 
@@ -167,5 +175,10 @@ var t = 36
         `https://openweathermap.org/img/w/${fiveDay.list[t].weather[0].icon}.png`
       );
       
-    });
+    })
+    .catch(error => {
+      alert("Lookup Failed, please check your City and State and try again.")
+      $(`.card-body`).addClass("invisible")
+    })
 }
+
