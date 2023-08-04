@@ -10,41 +10,61 @@ var lon = "";
 var locURL = "";
 var fiveDURL = "";
 
-// Start Search and add history tiles as each are created - starts to overwrite at #5
+function setHistory(){
 
-$("#search").click(function () {
+// loop to display items in local storage
+for (var i = 0; i < localStorage.length; i++) {
+    var key = localStorage.key(i);
+    var savedsrc = localStorage.getItem(key);
+    
+    $(`.searched${i}`).text(savedsrc)
+  }
+
+}
+
+// Start Search and add history tiles as each are created - starts to overwrite at #5
+// $("#search").click(function ()
+
+$( "#citySelect" ).on( "submit", function( event ){
   // set buttons to overwrite when search boxes are full
   if (searchCount === 5) {
     searchCount = 0;
   }
 
   // create url for location lookup (lat/long)
-
+  event.preventDefault()
   loc = $(`#cityInp`).val();
   $(`.searched${searchCount}`).text(loc);
   searchCount++;
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
   localStorage.setItem(searchCount, loc)
+  // $(`#cityInp`).val("")
   locationSearch();
+  dailySearch()
+  fiveDaySearch()
 });
 
 //Click function for history buttons
 $(document).on(`click`, `.search`, function (event) {
   loc = $(this).text();
-  console.log(loc);
   locURL = `https://api.openweathermap.org/geo/1.0/direct?q=${loc}&limit=1&appid=bf922896d93871f3fce26701fa6fe44c`;
   locationSearch();
+  dailySearch()
+  fiveDaySearch()
 });
 
 // Location Search - URL created from input and pulls the lat and lon from it.
-
 function locationSearch() {
   // send location lookup to api
   fetch(locURL)
     .then((response) => response.json())
+    .catch(error => {
+      alert("Lookup Failed, please check your City and try again.")
+    })
     .then((location) => {
-      console.log(location);
 
+      console.log(location)
+  
       // Place current location on page
       $(`#owLocation`).text(location[0].name + ", " + location[0].state);
       lat = location[0].lat;
@@ -52,11 +72,16 @@ function locationSearch() {
 
       dayURL = `https://api.openweathermap.org/data/2.5/weather?lat=${lat}&lon=${lon}&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial`;
       fiveDURL = `https://api.openweathermap.org/data/2.5/forecast?lat=${lat}&lon=${lon}&appid=bf922896d93871f3fce26701fa6fe44c&units=imperial&exclude=current,minutely,hourly,alerts`;
-    });
+    }
+
+    
+    );
+  
 }
 
-// Weather Search
 
+
+// Daily Stats
 function dailySearch() {
   fetch(dayURL)
     .then((response) => response.json())
@@ -74,6 +99,8 @@ function dailySearch() {
     });
 }
 
+
+// 5 Days stats
 function fiveDaySearch() {
   return fetch(fiveDURL)
     .then((response) => response.json())

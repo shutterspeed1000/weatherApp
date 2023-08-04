@@ -32,20 +32,23 @@
                 <!-- City Search and History Column -->
 
                 <h2>Search for a City:</h2>
-                <input id="cityInp" style="width: 100%" class="input-group-text"></input>
-                <button class="btn btn-primary" id="search">Search</button>
+                <form id="citySelect">
+                <input id="cityInp" placeholder="City, State" pattern="^([A-Za-z]+)(?:, ?)([A-Za-z]+)$" width: 100%" class="input-group-text"></input>
+                
+                <input class="btn btn-primary" id="search" type="submit" />
+                </form>
                 <hr>
                 </hr>
                 <section class="citylist" id="cities">
-                    <button class="btn btn-primary active search searched0 placeholder" role="button" style="width: 100%"
+                    <button class="btn border-black btn-primary active search searched0 placeholder" role="button" style="width: 100%"
                         aria-pressed="true"></button>
-                    <button class="btn btn-primary active search searched1 placeholder" role="button" style="width: 100%"
+                    <button class="btn border-black btn-primary active search searched1 placeholder" role="button" style="width: 100%"
                         aria-pressed="true"></button>
-                    <button class="btn btn-primary active search searched2 placeholder" role="button" style="width: 100%"
+                    <button class="btn border-black btn-primary active search searched2 placeholder" role="button" style="width: 100%"
                         aria-pressed="true"></button>
-                    <button class="btn btn-primary active search searched3 placeholder" role="button" style="width: 100%"
+                    <button class="btn border-black btn-primary active search searched3 placeholder" role="button" style="width: 100%"
                         aria-pressed="true"></button>
-                    <button class="btn btn-primary active search searched4 placeholder" role="button" style="width: 100%"
+                    <button class="btn border-black btn-primary active search searched4 placeholder" role="button" style="width: 100%"
                         aria-pressed="true"></button>
                 </section>
             </div>
