@@ -1,4 +1,4 @@
-# weatherApp
+# Weather Application
 
 ## Table of Contents
 - [Requerments](#requierments)
