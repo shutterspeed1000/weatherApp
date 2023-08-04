@@ -81,7 +81,7 @@ function dailySearch() {
     .then((response) => response.json())
     .then((currentW) => {
       $(`#dayDate`).text(
-        `Date: ${dayjs.unix(currentW.dt).format("MM-DD-YYYY")}`
+        `${dayjs.unix(currentW.dt).format("MM-DD-YYYY")}`
       );
       $(`#dayTemp`).text(`Temp: ${currentW.main.temp}`);
       $(`#dayWind`).text(`Wind: ${currentW.wind.speed}`);
@@ -101,7 +101,7 @@ function fiveDaySearch() {
       var t = 4;
       // Day 1
       $(`#date1`).text(
-        `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
+        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
       );
       $(`#temp1`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind1`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
@@ -113,7 +113,7 @@ function fiveDaySearch() {
       var t = 12;
       // Day 2
       $(`#date2`).text(
-        `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
+        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
       );
       $(`#temp2`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind2`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
@@ -125,7 +125,7 @@ function fiveDaySearch() {
       var t = 20;
       // Day 3
       $(`#date3`).text(
-        `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
+        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
       );
       $(`#temp3`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind3`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
@@ -137,7 +137,7 @@ function fiveDaySearch() {
       var t = 28;
       // Day 4
       $(`#date4`).text(
-        `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
+        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
       );
       $(`#temp4`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind4`).text(`Wind: ${fiveDay.list[t].wind.speed}`);
@@ -149,7 +149,7 @@ function fiveDaySearch() {
       var t = 36;
       // Day 5
       $(`#date5`).text(
-        `Date: ${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YYYY")}`
+        `${dayjs.unix(fiveDay.list[t].dt).format("MM-DD-YY")}`
       );
       $(`#temp5`).text(`Temp: ${fiveDay.list[t].main.temp}`);
       $(`#wind5`).text(`Wind: ${fiveDay.list[t].wind.speed}`);

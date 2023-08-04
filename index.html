@@ -33,128 +33,130 @@
 
                 <h2>Search for a City:</h2>
                 <form id="citySelect">
-                <input id="cityInp" placeholder="City, State" pattern="^([A-Za-z]+)(?:, ?)([A-Za-z]+)$" class="input-group-text col-12"></input>
-                
-                <input class="btn btn-primary" id="search" type="submit" />
+                    <input id="cityInp" placeholder="City, State" pattern="^([A-Za-z]+)(?:, ?)([A-Za-z]+)$"
+                        class="input-group-text col-12"></input>
+
+                    <input class="btn btn-primary" id="search" type="submit" />
                 </form>
                 <hr>
                 </hr>
                 <section class="citylist" id="cities">
-                    <button class="btn border-black btn-primary active search searched0 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                    <button class="btn border-black btn-primary active search searched1 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                    <button class="btn border-black btn-primary active search searched2 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                    <button class="btn border-black btn-primary active search searched3 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                    <button class="btn border-black btn-primary active search searched4 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                        <button class="btn border-black btn-primary active search searched5 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                        <button class="btn border-black btn-primary active search searched6 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                        <button class="btn border-black btn-primary active search searched7 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
-                        <button class="btn border-black btn-primary active search searched8 placeholder" role="button" style="width: 100%"
-                        aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched0 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched1 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched2 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched3 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched4 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched5 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched6 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched7 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
+                    <button class="btn border-black btn-primary active search searched8 placeholder" role="button"
+                        style="width: 100%" aria-pressed="true"></button>
                 </section>
             </div>
 
             <div class="col col-lg-9">
 
-                
 
-                        <div class="border col col-lg-12 bo">
 
-                            <div class="card" style="width: 100%;">
-                                <div class="card-body invisible">
-                                    <h2 id="owLocation"><h2>
-                                    <h5 class="card-title" id = "dayDate">Date:</h5>
+                <div class="border col col-lg-12 bo">
+
+                    <div class="card" style="width: 100%;">
+                        <div class="card-body invisible">
+                            <h2 id="owLocation">
+                                <h2>
+                                    <h5 class="card-title" id="dayDate">Date:</h5>
                                     <p><img id="dayIcon" src="" alt="Weather icon"></p>
-                                    <p class="card-text"  id = "dayTemp">Temp:</p>
-                                    <p class="card-text" id = "dayWind">Wind:</p>
-                                    <p class="card-text" id = "dayHum">Humidity:</p>
-                                </div>
-                              </div>
+                                    <p class="card-text" id="dayTemp">Temp:</p>
+                                    <p class="card-text" id="dayWind">Wind:</p>
+                                    <p class="card-text" id="dayHum">Humidity:</p>
+                        </div>
+                    </div>
 
+                </div>
+
+                <h2 row class="row justify-content-md-left">Five Day Forcast:</h2>
+
+                <div class="row col-lg-12 justify-content-center">
+                    <div class="row">
+
+
+                        <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%; min-width: 125px;">
+                            <div class="card-body justify-content--start invisible">
+                                <p class="card-title" id="date1"></p>
+                                <p><img id="icon1" src="" alt="Weather icon"></p>
+                                <p class="card-text" id="temp1">Temp:</p>
+                                <p class="card-text" id="wind1">Wind:</p>
+                                <p class="card-text" id="hum1">Humidity:</p>
+                            </div>
                         </div>
 
-                        <h2 row class="row justify-content-md-left">Five Day Forcast:</h2>
-
-                        <div class="col col-lg-12">
-                            <div class="row">
-                              
-                
-                            <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%;">
-                                        <div class="card-body justify-content--start invisible" >
-                                            <p class="card-title" id = "date1">Date:</p>
-                                            <p><img id="icon1" src="" alt="Weather icon"></p>
-                                            <p class="card-text"  id = "temp1">Temp:</p>
-                                            <p class="card-text" id = "wind1">Wind:</p>
-                                            <p class="card-text" id = "hum1">Humidity:</p>
-                                        </div>
-                                      </div>
-
-                                          <div class="card border-light bg-dark text-light justify-content-lg-start" style="width: 20%;">
-                                        <div class="card-body justify-content--start invisible">
-                                            <p class="card-title" id = "date2">Date:</p>
-                                            <p><img id="icon2" src="" alt="Weather icon"></p>
-                                            <p class="card-text"  id = "temp2">Temp:</p>
-                                            <p class="card-text" id = "wind2">Wind:</p>
-                                            <p class="card-text" id = "hum2">Humidity:</p>
-                                        </div>
-                                      </div>
-
-                                          <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%;">
-                                        <div class="card-body justify-content--start invisible">
-                                            <p class="card-title" id = "date3">Date:</p>
-                                            <p><img id="icon3" src="" alt="Weather icon"></p>
-                                            <p class="card-text"  id = "temp3">Temp:</p>
-                                            <p class="card-text" id = "wind3">Wind:</p>
-                                            <p class="card-text" id = "hum3">Humidity:</p>
-                                        </div>
-                                      </div>
-
-                                          <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%;">
-                                        <div class="card-body justify-content--start invisible">
-                                            <p class="card-title" id = "date4">Date:</p>
-                                            <p><img id="icon4" src="" alt="Weather icon"></p>
-                                            <p class="card-text"  id = "temp4">Temp:</p>
-                                            <p class="card-text" id = "wind4">Wind:</p>
-                                            <p class="card-text" id = "hum4">Humidity:</p>
-                                        </div>
-                                      </div>
-
-                                          <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%;">
-                                        <div class="card-body justify-content--start invisible">
-                                            <p class="card-title" id = "date5">Date:</p>
-                                            <p><img id="icon5" src="" alt="Weather icon"></p>
-                                            <p class="card-text"  id = "temp5">Temp:</p>
-                                            <p class="card-text" id = "wind5">Wind:</p>
-                                            <p class="card-text" id = "hum5">Humidity:</p>
-                                        </div>
-                                      </div>
-
-
-                                      
-
-
-                        
-
- 
-                        
-                             
-        
-
+                        <div class="card border-light bg-dark text-light justify-content-lg-start" style="width: 20%; min-width: 125px;">
+                            <div class="card-body justify-content--start invisible">
+                                <p class="card-title" id="date2"></p>
+                                <p><img id="icon2" src="" alt="Weather icon"></p>
+                                <p class="card-text" id="temp2">Temp:</p>
+                                <p class="card-text" id="wind2">Wind:</p>
+                                <p class="card-text" id="hum2">Humidity:</p>
+                            </div>
                         </div>
+
+                        <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%; min-width: 125px;">
+                            <div class="card-body justify-content--start invisible">
+                                <p class="card-title" id="date3"></p>
+                                <p><img id="icon3" src="" alt="Weather icon"></p>
+                                <p class="card-text" id="temp3">Temp:</p>
+                                <p class="card-text" id="wind3">Wind:</p>
+                                <p class="card-text" id="hum3">Humidity:</p>
+                            </div>
+                        </div>
+
+                        <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%; min-width: 125px;">
+                            <div class="card-body justify-content--start invisible">
+                                <p class="card-title" id="date4"></p>
+                                <p><img id="icon4" src="" alt="Weather icon"></p>
+                                <p class="card-text" id="temp4">Temp:</p>
+                                <p class="card-text" id="wind4">Wind:</p>
+                                <p class="card-text" id="hum4">Humidity:</p>
+                            </div>
+                        </div>
+
+                        <div class="card bg-dark border-light text-light justify-content-lg-start" style="width: 20%; min-width: 125px;">
+                            <div class="card-body justify-content--start invisible">
+                                <p class="card-title" id="date5"></p>
+                                <p><img id="icon5" src="" alt="Weather icon"></p>
+                                <p class="card-text" id="temp5">Temp:</p>
+                                <p class="card-text" id="wind5">Wind:</p>
+                                <p class="card-text" id="hum5">Humidity:</p>
+                            </div>
+                        </div>
+
+
+
+
+
+
+
+
+
+
+
+
+                    </div>
+
+
+                </div>
+
 
 
             </div>
-
-
-
-        </div>
 
 
 
@@ -179,10 +181,10 @@
         integrity="sha384-HwwvtgBNo3bZJJLYd8oVXjrBZt8cqVSpeBNS5n7C8IVInixGAoxmnlMuBnhbgrkm"
         crossorigin="anonymous"></script>
     <!-- JQuery  -->
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
-<!-- DateJS -->
-<script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
-integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+    <!-- DateJS -->
+    <script src="https://cdn.jsdelivr.net/npm/dayjs@1.11.3/dayjs.min.js"
+        integrity="sha256-iu/zLUB+QgISXBLCW/mcDi/rnf4m4uEDO0wauy76x7U=" crossorigin="anonymous"></script>
 
     <!-- JS -->
     <script src="./assets/js/script.js"></script>
