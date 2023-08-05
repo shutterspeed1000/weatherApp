@@ -18,7 +18,9 @@ $(document).ready(function () {
     $(`.searched${key}`).text(savedsrc);
     searchCount = i;
   }
-  searchCount++;
+  if (searchCount > 0) {
+    searchCount++;
+  }
 });
 
 // Start Search and add history tiles as each are created - starts to overwrite at #5
